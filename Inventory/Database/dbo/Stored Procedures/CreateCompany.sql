@@ -24,7 +24,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	INSERT INTO [dbo].[teCompanies] 
+	INSERT INTO [dbo].[Companies] 
 	(
 		[Name],
 		[Address1],

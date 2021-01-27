@@ -14,6 +14,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	INSERT INTO [dbo].[tdCategories] ([Name])
+	INSERT INTO [dbo].[Categories] ([Name])
 	SELECT @Name
 END

@@ -1,13 +1,14 @@
 ﻿-- =============================================
 -- Author:		Jake
--- Create date: 2020-09-19
--- Description:	Select one or more cities from the Cities table
---              exec [dbo].[GetCities] null
---              exec [dbo].[GetCities] 1
+-- Create date: now
+-- Description:	Create an inventory item
 -- =============================================
-CREATE PROCEDURE [dbo].[GetCities] 
+CREATE PROCEDURE [dbo].[CreateItem] 
 	-- Add the parameters for the stored procedure here
-	@Id int
+	@Name nvarchar(255), 
+	@Description nvarchar(max),
+	@CategoryId int,
+	@SubcategoryId int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -15,9 +16,14 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT [Id]
-		  ,[Name]
-	  FROM [dbo].[Cities]
-	  WHERE @Id IS NULL OR [Id] = @Id
-
+	INSERT INTO [dbo].[Items]
+	([Name]
+	,[Description]
+	,[CategoryId]
+	,[SubcategoryId])
+	VALUES
+	(@Name
+	,@Description
+	,@CategoryId
+	,@SubcategoryId)
 END

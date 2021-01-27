@@ -13,6 +13,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	INSERT INTO [dbo].[tdCities] ([Name])
+	INSERT INTO [dbo].[Cities] ([Name])
 	SELECT @Name
 END

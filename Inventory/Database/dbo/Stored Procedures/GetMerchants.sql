@@ -30,12 +30,12 @@ BEGIN
 		  ,m.[Phone]
 		  ,m.[Fax]
 		  ,m.[Email]
-	  FROM [dbo].[teMerchants] m
-		  INNER JOIN [dbo].[tdCities] ci
+	  FROM [dbo].[Merchants] m
+		  INNER JOIN [dbo].[Cities] ci
 		  ON ci.[Id] = m.[CityId]
-		  INNER JOIN [dbo].[tdStates] s
+		  INNER JOIN [dbo].[States] s
 		  ON s.[Id] = m.[StateId]
-		  INNER JOIN [dbo].[tdCities] co
+		  INNER JOIN [dbo].[Countries] co
 		  ON co.[Id] = m.[CountryId]
 	  WHERE @Id IS NULL OR m.[Id] = @Id
 

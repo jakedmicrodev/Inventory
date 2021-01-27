@@ -25,7 +25,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-UPDATE [dbo].[teCompanies]
+UPDATE [dbo].[Companies]
    SET [Name] = @Name
       ,[Address1] = @Address1
       ,[Address2] = @Address2

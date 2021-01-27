@@ -1,14 +1,15 @@
 ﻿
+
 -- =============================================
 -- Author:		Jake
 -- Create date: 2020-09-19
--- Description:	Update a state in the States table
---              exec [dbo].[UpdateState] 1, 'Unknown'
+-- Description:	Select one or more art types from the ArtTypes table
+--              exec [dbo].[GetArtTypes] null
+--              exec [dbo].[GetArtTypes] 1
 -- =============================================
-CREATE PROCEDURE [dbo].[UpdateState] 
+CREATE PROCEDURE [dbo].[GetArtTypes] 
 	-- Add the parameters for the stored procedure here
-	@Id int,
-	@Name varchar(100)
+	@Id int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -16,7 +17,10 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[States]
-	SET [Name] = @Name
-	WHERE [Id] = @Id
+	SELECT [Id]
+		  ,[Name]
+	  FROM [dbo].[ArtTypes]
+	  WHERE @Id IS NULL OR [Id] = @Id
+	  ORDER BY [Name]
+
 END

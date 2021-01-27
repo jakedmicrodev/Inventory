@@ -2,12 +2,10 @@
 -- =============================================
 -- Author:		Jake
 -- Create date: 2020-09-19
--- Description:	Update a state in the States table
---              exec [dbo].[UpdateState] 1, 'Unknown'
+-- Description:	Insert an artist into the Artists table
 -- =============================================
-CREATE PROCEDURE [dbo].[UpdateState] 
+CREATE PROCEDURE [dbo].[CreateArtist] 
 	-- Add the parameters for the stored procedure here
-	@Id int,
 	@Name varchar(100)
 AS
 BEGIN
@@ -16,7 +14,8 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[States]
-	SET [Name] = @Name
-	WHERE [Id] = @Id
+	INSERT INTO [dbo].[Artists] 
+	([Name])
+	VALUES
+	(@Name)
 END

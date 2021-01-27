@@ -1,11 +1,12 @@
 ﻿
+
 -- =============================================
 -- Author:		Jake
--- Create date: 2020-09-19
--- Description:	Update a state in the States table
---              exec [dbo].[UpdateState] 1, 'Unknown'
+-- Create date: now
+-- Description:	Update an artist in the Artists table
+--              exec [dbo].[UpdateArtist] 1, 'Joe Artist'
 -- =============================================
-CREATE PROCEDURE [dbo].[UpdateState] 
+CREATE PROCEDURE [dbo].[UpdateArtist] 
 	-- Add the parameters for the stored procedure here
 	@Id int,
 	@Name varchar(100)
@@ -16,7 +17,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[States]
+	UPDATE [dbo].[Artists]
 	SET [Name] = @Name
 	WHERE [Id] = @Id
 END

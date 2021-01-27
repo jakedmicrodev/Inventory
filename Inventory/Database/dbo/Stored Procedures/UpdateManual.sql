@@ -9,7 +9,7 @@ CREATE PROCEDURE [dbo].[UpdateManual]
 	-- Add the parameters for the stored procedure here
 	@Id int,
 	@Name varchar(100),
-	@ProductId int
+	@ModelId int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -17,8 +17,8 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[teManuals]
+	UPDATE [dbo].[Manuals]
 	SET [Name] = @Name,
-		[ProductId] = @ProductId
+		[ModelId] = @ModelId
 	WHERE [Id] = @Id
 END

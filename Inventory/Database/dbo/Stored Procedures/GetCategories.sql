@@ -18,7 +18,7 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT [Id]
 		  ,[Name]
-	  FROM [dbo].[tdCategories]
+	  FROM [dbo].[Categories]
 	  WHERE @Id IS NULL OR [Id] = @Id
 
 END

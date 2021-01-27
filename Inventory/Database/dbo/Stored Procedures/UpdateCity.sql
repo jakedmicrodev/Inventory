@@ -16,7 +16,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[tdCities]
+	UPDATE [dbo].[Cities]
 	SET [Name] = @Name
 	WHERE [Id] = @Id
 END

@@ -1,13 +1,12 @@
 ﻿
+
 -- =============================================
 -- Author:		Jake
--- Create date: 2020-09-19
--- Description:	Update a state in the States table
---              exec [dbo].[UpdateState] 1, 'Unknown'
+-- Create date: now
+-- Description:	Insert a sub category into the Subcategories table
 -- =============================================
-CREATE PROCEDURE [dbo].[UpdateState] 
+CREATE PROCEDURE [dbo].[CreateSubCategory] 
 	-- Add the parameters for the stored procedure here
-	@Id int,
 	@Name varchar(100)
 AS
 BEGIN
@@ -16,7 +15,6 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[States]
-	SET [Name] = @Name
-	WHERE [Id] = @Id
+	INSERT INTO [dbo].[Subcategories] ([Name])
+	SELECT @Name
 END

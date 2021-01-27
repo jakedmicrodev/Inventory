@@ -16,7 +16,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[tdCategories]
+	UPDATE [dbo].[Categories]
 	SET [Name] = @Name
 	WHERE [Id] = @Id
 END

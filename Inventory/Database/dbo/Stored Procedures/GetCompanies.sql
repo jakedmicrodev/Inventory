@@ -29,12 +29,12 @@ BEGIN
 		  ,c.[Phone]
 		  ,c.[Fax]
 		  ,c.[Email]
-	  FROM [dbo].[teCompanies] c
-		  INNER JOIN [dbo].[tdCities] ci
+	  FROM [dbo].[Companies] c
+		  INNER JOIN [dbo].[Cities] ci
 		  ON ci.[Id] = c.[CityId]
-		  INNER JOIN [dbo].[tdStates] s
+		  INNER JOIN [dbo].[States] s
 		  ON s.[Id] = c.[StateId]
-		  INNER JOIN [dbo].[tdCities] co
+		  INNER JOIN [dbo].[Countries] co
 		  ON co.[Id] = c.[CountryId]
 	  WHERE @Id IS NULL OR c.[Id] = @Id
 

@@ -4,12 +4,12 @@
 -- Author:		Jake
 -- Create date: 2020-09-19
 -- Description:	Insert a manual into the Manuals table
---              exec [dbo].[CreateManual]  'Oregon'
+--              exec [dbo].[CreateManual]  'Oregon', 1
 -- =============================================
 CREATE PROCEDURE [dbo].[CreateManual] 
 	-- Add the parameters for the stored procedure here
 	@Name varchar(100),
-	@ProductId int
+	@ModelId int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -17,14 +17,14 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	INSERT INTO [dbo].[teManuals] 
+	INSERT INTO [dbo].[Manuals] 
 	(
 		[Name],
-		[ProductId]
+		[ModelId]
 	)
 	VALUES
 	(	
 		@Name,
-		@ProductId
+		@ModelId
 	)
 END

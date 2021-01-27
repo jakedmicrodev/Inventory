@@ -1,14 +1,18 @@
 ﻿
+
 -- =============================================
 -- Author:		Jake
 -- Create date: 2020-09-19
--- Description:	Update a state in the States table
---              exec [dbo].[UpdateState] 1, 'Unknown'
+-- Description:	Update an item in the Items table
+--              exec [dbo].[UpdateItem] 1, 'Unknown'
 -- =============================================
-CREATE PROCEDURE [dbo].[UpdateState] 
+CREATE PROCEDURE [dbo].[UpdateItem] 
 	-- Add the parameters for the stored procedure here
 	@Id int,
-	@Name varchar(100)
+	@Name nvarchar(255),
+	@Description nvarchar(max),
+	@CategoryId int,
+	@SubcategoryId int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -16,7 +20,10 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[States]
-	SET [Name] = @Name
+	UPDATE [dbo].[Items]
+	SET [Name] = @Name,
+		[Description] = @Description,
+		[CategoryId] = @CategoryId,
+		[SubcategoryId] = @SubcategoryId
 	WHERE [Id] = @Id
 END

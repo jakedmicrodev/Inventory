@@ -100,5 +100,31 @@
     <Build Include="dbo\Stored Procedures\CreateCompany.sql" />
     <Build Include="dbo\Stored Procedures\CreateCity.sql" />
     <Build Include="dbo\Stored Procedures\CreateCategory.sql" />
+    <Build Include="dbo\Tables\ArtTypes.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateSubCategory.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateModel.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateItem.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateArtType.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateArtist.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateAppraiser.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateAppraisal.sql" />
+    <Build Include="dbo\Stored Procedures\GetSubCategories.sql" />
+    <Build Include="dbo\Stored Procedures\GetModels.sql" />
+    <Build Include="dbo\Stored Procedures\GetItems.sql" />
+    <Build Include="dbo\Stored Procedures\GetArtWorks.sql" />
+    <Build Include="dbo\Stored Procedures\GetArtTypes.sql" />
+    <Build Include="dbo\Stored Procedures\GetArtists.sql" />
+    <Build Include="dbo\Stored Procedures\GetAppraisals.sql" />
+    <Build Include="dbo\Stored Procedures\CreateSubCategory.sql" />
+    <Build Include="dbo\Stored Procedures\CreateModel.sql" />
+    <Build Include="dbo\Stored Procedures\CreateItem.sql" />
+    <Build Include="dbo\Stored Procedures\CreateArtwork.sql" />
+    <Build Include="dbo\Stored Procedures\CreateArtType.sql" />
+    <Build Include="dbo\Stored Procedures\CreateArtist.sql" />
+    <Build Include="dbo\Stored Procedures\CreateAppraiser.sql" />
+    <Build Include="dbo\Stored Procedures\CreateAppraisal.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlSchemaCompare.scmp" />
   </ItemGroup>
 </Project>

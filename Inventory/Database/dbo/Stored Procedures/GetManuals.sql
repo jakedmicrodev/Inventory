@@ -11,7 +11,7 @@
 CREATE PROCEDURE [dbo].[GetManuals] 
 	-- Add the parameters for the stored procedure here
 	@Id int,
-	@ProductId int
+	@ModelId int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -21,11 +21,12 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT m.[Id]
 		  ,m.[Name]
-		  ,m.[ProductId]
-		  ,p.[Name] AS [Product]
-	  FROM [dbo].[teManuals] m
-	  LEFT JOIN [dbo].[teProducts] p
-	  ON p.[Id] = m.[ProductId]
-	  WHERE @Id IS NULL OR m.[Id] = @Id OR @ProductId IS NULL OR m.[ProductId] = @ProductId
+		  ,m.[ModelId]
+		  ,mo.[Name] AS [Model]
+	  FROM [dbo].[Manuals] m
+	  LEFT JOIN [dbo].[Models] mo
+	  ON m.[ModelId] = mo.[Id]
+	  WHERE (@Id IS NULL OR m.[Id] = @Id)
+	  AND (@ModelId IS NULL OR m.[ModelId] = @ModelId)
 
 END
