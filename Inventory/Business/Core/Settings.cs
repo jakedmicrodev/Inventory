@@ -7,7 +7,7 @@ namespace Business.Core
     {
         private static string inventoryConnectionString = string.Empty;
 
-        public static string JobSearchConnectionString
+        public static string InventoryConnectionString
         {
             get
             {

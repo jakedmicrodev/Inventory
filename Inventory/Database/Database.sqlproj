@@ -123,6 +123,7 @@
     <Build Include="dbo\Stored Procedures\CreateArtist.sql" />
     <Build Include="dbo\Stored Procedures\CreateAppraiser.sql" />
     <Build Include="dbo\Stored Procedures\CreateAppraisal.sql" />
+    <Build Include="dbo\Stored Procedures\GetAppraisers.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SqlSchemaCompare.scmp" />
