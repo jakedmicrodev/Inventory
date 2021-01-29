@@ -19,7 +19,7 @@ namespace Business.Entities
         [Display(Name = "Appraisal Date")]
         public DateTime AppraisalDate { get; set; }
 
-        public decimal AppraisalValue { get; set; }
+        public decimal AppraisedValue { get; set; }
 
         public int ArtworkId { get; set; }
         public string Artwork { get; set; }

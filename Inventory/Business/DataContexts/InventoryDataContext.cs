@@ -179,6 +179,209 @@ namespace Business.DataContexts
 
         #region Create
 
+        public void CreateAppraisal(Appraisal v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@AppraiserId", v.AppraiserId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@AppraisalDate", v.AppraisalDate, DbType.DateTime, ParameterDirection.Input);
+            parameters.Add("@AppraisedValue", v.AppraisedValue, DbType.Currency, ParameterDirection.Input);
+            parameters.Add("@ArtworkId", v.ArtworkId, DbType.Int32, ParameterDirection.Input);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEAPPRAISAL, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateAppraiser(Appraiser v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@CompanyId", v.CompanyId, DbType.Int32, ParameterDirection.Input);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEAPPRAISER, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateArtist(IdName a)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", a.Name, DbType.String, ParameterDirection.Input, a.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEARTIST, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateArtType(IdName a)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", a.Name, DbType.String, ParameterDirection.Input, a.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEARTTYPE, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateArtwork(Artwork v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Title", v.Title, DbType.String, ParameterDirection.Input, v.Title.Length);
+            parameters.Add("@ArtTypeId", v.ArtTypeId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ArtistId", v.ArtistId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Notes", v.Notes, DbType.String, ParameterDirection.Input, v.Notes.Length);
+            parameters.Add("@ItemId", v.ItemId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ImageName", v.ImageName, DbType.String, ParameterDirection.Input, v.ImageName.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEARTWORK, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateCategory(IdName a)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", a.Name, DbType.String, ParameterDirection.Input, a.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATECATEGORY, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateCity(IdName a)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", a.Name, DbType.String, ParameterDirection.Input, a.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATECITY, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateCompany(Company v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@Address1", v.Address1, DbType.String, ParameterDirection.Input, v.Address1.Length);
+            parameters.Add("@Address2", v.Address2, DbType.String, ParameterDirection.Input, v.Address2.Length);
+            parameters.Add("@CityId", v.CityId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@StateId", v.StateId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@CountryId", v.CountryId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@PostalCode", v.PostalCode, DbType.String, ParameterDirection.Input, v.PostalCode.Length);
+            parameters.Add("@Phone", v.Phone, DbType.String, ParameterDirection.Input, v.Phone.Length);
+            parameters.Add("@Fax", v.Fax, DbType.String, ParameterDirection.Input, v.Fax.Length);
+            parameters.Add("@Email", v.Email, DbType.String, ParameterDirection.Input, v.Email.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATECOMPANY, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateItem(Item a)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", a.Name, DbType.String, ParameterDirection.Input, a.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEITEM, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateManual(Manual v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@ModelId", v.ModelId, DbType.Int32, ParameterDirection.Input);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEMANUAL, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateMerchant(Company v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@Address1", v.Address1, DbType.String, ParameterDirection.Input, v.Address1.Length);
+            parameters.Add("@Address2", v.Address2, DbType.String, ParameterDirection.Input, v.Address2.Length);
+            parameters.Add("@CityId", v.CityId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@StateId", v.StateId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@CountryId", v.CountryId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@PostalCode", v.PostalCode, DbType.String, ParameterDirection.Input, v.PostalCode.Length);
+            parameters.Add("@Phone", v.Phone, DbType.String, ParameterDirection.Input, v.Phone.Length);
+            parameters.Add("@Fax", v.Fax, DbType.String, ParameterDirection.Input, v.Fax.Length);
+            parameters.Add("@Email", v.Email, DbType.String, ParameterDirection.Input, v.Email.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEMERCHANT, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateModel(Model v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@ProductId", v.ProductId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ModelNumber", v.ModelNumber, DbType.String, ParameterDirection.Input, v.ModelNumber.Length);
+            parameters.Add("@SerialNumber", v.SerialNumber, DbType.String, ParameterDirection.Input, v.SerialNumber.Length);
+            parameters.Add("@ImageName", v.ImageName, DbType.String, ParameterDirection.Input, v.ImageName.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEMODEL, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateProduct(Product v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@CompanyId", v.CompanyId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ItemId", v.ItemId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@MerchantId", v.MerchantId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@SupportUrl", v.SupportUrl, DbType.String, ParameterDirection.Input, v.SupportUrl.Length);
+            parameters.Add("@AddDate", v.AddDate, DbType.DateTime, ParameterDirection.Input);
+            parameters.Add("@RemoveDate", v.RemoveDate, DbType.DateTime, ParameterDirection.Input);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATEPRODUCT, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateState(IdName a)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", a.Name, DbType.String, ParameterDirection.Input, a.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATESTATE, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void CreateSubCategory(IdName a)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Name", a.Name, DbType.String, ParameterDirection.Input, a.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.CREATESUBCATEGORY, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         #endregion
 
         #region Delete
@@ -186,6 +389,224 @@ namespace Business.DataContexts
         #endregion
 
         #region Edit
+
+        public void UpdateAppraisal(Appraisal v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@AppraiserId", v.AppraiserId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@AppraisalDate", v.AppraisalDate, DbType.DateTime, ParameterDirection.Input);
+            parameters.Add("@AppraisedValue", v.AppraisedValue, DbType.Currency, ParameterDirection.Input);
+            parameters.Add("@ArtworkId", v.ArtworkId, DbType.Int32, ParameterDirection.Input);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEAPPRAISAL, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateAppraiser(Appraiser v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@CompanyId", v.CompanyId, DbType.Int32, ParameterDirection.Input);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEAPPRAISER, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateArtist(IdName v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEARTIST, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateArtType(IdName v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEARTTYPE, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateArtwork(Artwork v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Title", v.Title, DbType.String, ParameterDirection.Input, v.Title.Length);
+            parameters.Add("@ArtTypeId", v.ArtTypeId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ArtistId", v.ArtistId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Notes", v.Notes, DbType.String, ParameterDirection.Input, v.Notes.Length);
+            parameters.Add("@ItemId", v.ItemId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ImageName", v.ImageName, DbType.String, ParameterDirection.Input, v.ImageName.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEARTWORK, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateCategory(IdName v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATECATEGORY, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateCity(IdName v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATECITY, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateCompany(Company v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@Address1", v.Address1, DbType.String, ParameterDirection.Input, v.Address1.Length);
+            parameters.Add("@Address2", v.Address2, DbType.String, ParameterDirection.Input, v.Address2.Length);
+            parameters.Add("@CityId", v.CityId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@StateId", v.StateId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@CountryId", v.CountryId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@PostalCode", v.PostalCode, DbType.String, ParameterDirection.Input, v.PostalCode.Length);
+            parameters.Add("@Phone", v.Phone, DbType.String, ParameterDirection.Input, v.Phone.Length);
+            parameters.Add("@Fax", v.Fax, DbType.String, ParameterDirection.Input, v.Fax.Length);
+            parameters.Add("@Email", v.Email, DbType.String, ParameterDirection.Input, v.Email.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATECOMPANY, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateItem(Item v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEITEM, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateManual(Manual v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@ModelId", v.ModelId, DbType.Int32, ParameterDirection.Input);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEMANUAL, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateMerchant(Company v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@Address1", v.Address1, DbType.String, ParameterDirection.Input, v.Address1.Length);
+            parameters.Add("@Address2", v.Address2, DbType.String, ParameterDirection.Input, v.Address2.Length);
+            parameters.Add("@CityId", v.CityId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@StateId", v.StateId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@CountryId", v.CountryId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@PostalCode", v.PostalCode, DbType.String, ParameterDirection.Input, v.PostalCode.Length);
+            parameters.Add("@Phone", v.Phone, DbType.String, ParameterDirection.Input, v.Phone.Length);
+            parameters.Add("@Fax", v.Fax, DbType.String, ParameterDirection.Input, v.Fax.Length);
+            parameters.Add("@Email", v.Email, DbType.String, ParameterDirection.Input, v.Email.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEMERCHANT, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateModel(Model v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+            parameters.Add("@ProductId", v.ProductId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ModelNumber", v.ModelNumber, DbType.String, ParameterDirection.Input, v.ModelNumber.Length);
+            parameters.Add("@SerialNumber", v.SerialNumber, DbType.String, ParameterDirection.Input, v.SerialNumber.Length);
+            parameters.Add("@ImageName", v.ImageName, DbType.String, ParameterDirection.Input, v.ImageName.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEMODEL, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateProduct(Product v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@CompanyId", v.CompanyId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@ItemId", v.ItemId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@MerchantId", v.MerchantId, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@SupportUrl", v.SupportUrl, DbType.String, ParameterDirection.Input, v.SupportUrl.Length);
+            parameters.Add("@AddDate", v.AddDate, DbType.DateTime, ParameterDirection.Input);
+            parameters.Add("@RemoveDate", v.RemoveDate, DbType.DateTime, ParameterDirection.Input);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATEPRODUCT, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateState(IdName v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATESTATE, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void UpdateSubCategory(IdName v)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Id", v.Id, DbType.Int32, ParameterDirection.Input);
+            parameters.Add("@Name", v.Name, DbType.String, ParameterDirection.Input, v.Name.Length);
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                conn.Execute(StoredProcedures.UPDATESUBCATEGORY, parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
         #endregion
 

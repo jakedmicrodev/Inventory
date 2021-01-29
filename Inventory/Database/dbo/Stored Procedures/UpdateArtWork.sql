@@ -23,7 +23,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	UPDATE [dbo].[ArtWorks]
+	UPDATE [dbo].[Artworks]
 	SET [Title] = @Title,
 		[ArtTypeId] = @ArtTypeId,
 		[ArtistId] = @ArtistId,

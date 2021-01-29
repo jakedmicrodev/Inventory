@@ -26,7 +26,7 @@ BEGIN
 		  ,s.[Name] AS [Subcategory]
 	  FROM [dbo].[Items] i
 	  LEFT JOIN [dbo].[Categories] c ON i.[CategoryId] = c.[Id]
-	  LEFT JOIN [dbo].[Subcategories] s ON i.[SubCategoryId] = s.[Id]
+	  LEFT JOIN [dbo].[Subcategories] s ON i.[SubcategoryId] = s.[Id]
 	  WHERE (@Id IS NULL OR i.[Id] = @Id)
 	  AND (@Name IS NULL OR i.[Name] LIKE '%' + @Name + '%')
 	  AND (@Description IS NULL OR i.[Description] LIKE '%' + @Description + '%')

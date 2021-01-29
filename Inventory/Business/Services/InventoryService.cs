@@ -8,6 +8,82 @@ namespace Business.Services
     {
         #region Create
 
+        public void CreateAppraisal(Appraisal a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateAppraisal(a);
+        }
+        public void CreateAppraiser(Appraiser a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateAppraiser(a);
+        }
+        public void CreateArtist(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateArtist(a);
+        }
+        public void CreateArtType(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateArtType(a);
+        }
+        public void CreateArtwork(Artwork a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateArtwork(a);
+        }
+        public void CreateCategory(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateCategory(a);
+        }
+        public void CreateCity(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateCity(a);
+        }
+        public void CreateCompany(Company a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateCompany(a);
+        }
+        public void CreateItem(Item a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateItem(a);
+        }
+        public void CreateManual(Manual a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateManual(a);
+        }
+        public void CreateMerchant(Company a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateMerchant(a);
+        }
+        public void CreateModel(Model a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateModel(a);
+        }
+        public void CreateProduct(Product a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateProduct(a);
+        }
+        public void CreateState(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateState(a);
+        }
+        public void CreateSubCategory(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.CreateSubCategory(a);
+        }
+
         #endregion
 
         #region Delete
@@ -15,6 +91,82 @@ namespace Business.Services
         #endregion
 
         #region Edit
+
+        public void UpdateAppraisal(Appraisal a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateAppraisal(a);
+        }
+        public void UpdateAppraiser(Appraiser a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateAppraiser(a);
+        }
+        public void UpdateArtist(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateArtist(a);
+        }
+        public void UpdateArtType(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateArtType(a);
+        }
+        public void UpdateArtwork(Artwork a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateArtwork(a);
+        }
+        public void UpdateCategory(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateCategory(a);
+        }
+        public void UpdateCity(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateCity(a);
+        }
+        public void UpdateCompany(Company a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateCompany(a);
+        }
+        public void UpdateItem(Item a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateItem(a);
+        }
+        public void UpdateManual(Manual a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateManual(a);
+        }
+        public void UpdateMerchant(Company a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateMerchant(a);
+        }
+        public void UpdateModel(Model a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateModel(a);
+        }
+        public void UpdateProduct(Product a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateProduct(a);
+        }
+        public void UpdateState(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateState(a);
+        }
+        public void UpdateSubCategory(IdName a)
+        {
+            InventoryDataContext i = new InventoryDataContext();
+            i.UpdateSubCategory(a);
+        }
 
         #endregion
 
