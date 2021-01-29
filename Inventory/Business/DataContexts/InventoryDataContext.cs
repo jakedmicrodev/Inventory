@@ -126,6 +126,54 @@ namespace Business.DataContexts
 
         }
 
+        private List<SelectListItem> FillModels(List<Model> v)
+        {
+            List<SelectListItem> l = new List<SelectListItem>();
+
+            foreach (Model c in v)
+            {
+                l.Add(new SelectListItem { Text = c.Name, Value = c.Id.ToString() });
+            }
+            return l;
+
+        }
+
+        private List<SelectListItem> FillModels(List<Model> v, int Id)
+        {
+            List<SelectListItem> l = new List<SelectListItem>();
+
+            foreach (Model c in v)
+            {
+                l.Add(new SelectListItem { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Id == Id) });
+            }
+            return l;
+
+        }
+
+        private List<SelectListItem> FillProducts(List<Product> v)
+        {
+            List<SelectListItem> l = new List<SelectListItem>();
+
+            foreach (Product c in v)
+            {
+                l.Add(new SelectListItem { Text = c.Item, Value = c.Id.ToString() });
+            }
+            return l;
+
+        }
+
+        private List<SelectListItem> FillProducts(List<Product> v, int Id)
+        {
+            List<SelectListItem> l = new List<SelectListItem>();
+
+            foreach (Product c in v)
+            {
+                l.Add(new SelectListItem { Text = c.Item, Value = c.Id.ToString(), Selected = (c.Id == Id) });
+            }
+            return l;
+
+        }
+
 
         #endregion
 
@@ -143,7 +191,6 @@ namespace Business.DataContexts
 
         #region Get
 
-
         public Appraisal GetAppraisal()
         {
             Appraisal a = new Appraisal();
@@ -152,7 +199,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public Appraisal GetAppraisal(int Id)
         {
             Appraisal a = null;
@@ -170,7 +216,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public List<Appraisal> GetAppraisals()
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -178,7 +223,7 @@ namespace Business.DataContexts
                 return conn.Query<Appraisal>(StoredProcedures.GETAPPRAISALS).ToList<Appraisal>();
             }
         }
-
+        
         public Appraiser GetAppraiser()
         {
             Appraiser a = new Appraiser();
@@ -186,7 +231,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public Appraiser GetAppraiser(int Id)
         {
             Appraiser a = null;
@@ -203,7 +247,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public List<Appraiser> GetAppraisers()
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -221,7 +264,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public Artwork GetArtwork(int Id)
         {
             Artwork a = null;
@@ -240,7 +282,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public List<Artwork> GetArtworks()
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -255,7 +296,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public IdName GetArtist(int Id)
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -266,7 +306,6 @@ namespace Business.DataContexts
                 return conn.QueryFirst<IdName>(StoredProcedures.GETARTISTS + " @Id", parameters);
             }
         }
-
         public List<IdName> GetArtists()
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -281,7 +320,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public IdName GetArtType(int Id)
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -292,7 +330,6 @@ namespace Business.DataContexts
                 return conn.QueryFirst<IdName>(StoredProcedures.GETARTTYPES + " @Id", parameters);
             }
         }
-
         public List<IdName> GetArtTypes()
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -307,7 +344,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public IdName GetCategory(int Id)
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -318,7 +354,6 @@ namespace Business.DataContexts
                 return conn.QueryFirst<IdName>(StoredProcedures.GETCATEGORIES + " @Id", parameters);
             }
         }
-
         public List<IdName> GetCategories()
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -334,14 +369,12 @@ namespace Business.DataContexts
                 return conn.Query<IdName>(StoredProcedures.GETCITIES).ToList<IdName>();
             }
         }
-
         public IdName GetCity()
         {
             IdName a = new IdName();
 
             return a;
         }
-
         public IdName GetCity(int Id)
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -360,7 +393,6 @@ namespace Business.DataContexts
                 return conn.Query<Company>(StoredProcedures.GETCOMPANIES).ToList<Company>();
             }
         }
-
         public Company GetCompany()
         {
             Company c = new Company();
@@ -371,7 +403,6 @@ namespace Business.DataContexts
 
             return c;
         }
-
         public Company GetCompany(int Id)
         {
             Company c = null;
@@ -398,12 +429,10 @@ namespace Business.DataContexts
                 return conn.Query<IdName>(StoredProcedures.GETCOUNTRIES).ToList<IdName>();
             }
         }
-
         public IdName GetCountry()
         {
             return new IdName();
         }
-
         public IdName GetCountry(int Id)
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -424,18 +453,23 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public Item GetItem(int Id)
         {
+            Item a = null;
+
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
             {
                 var parameters = new DynamicParameters();
 
                 parameters.Add("@Id", Id, DbType.Int32, ParameterDirection.Input);
-                return conn.QueryFirst<Item>(StoredProcedures.GETITEMS + " @Id", parameters);
+                a = conn.QueryFirst<Item>(StoredProcedures.GETITEMS + " @Id", parameters);
             }
-        }
 
+            a.Categories = FillList(GetCategories(), a.CategoryId);
+            a.SubCategories = FillList(GetSubCategories(), a.SubCategoryId);
+
+            return a;
+        }
         public List<Item> GetItems()
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -444,7 +478,145 @@ namespace Business.DataContexts
             }
 
         }
-        #endregion
+
+        public Manual GetManual()
+        {
+            Manual a = new Manual();
+
+            a.Models = FillModels(GetModels());
+
+            return a;
+        }
+        public Manual GetManual(int Id)
+        {
+            Manual a = new Manual();
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Id", Id, DbType.Int32, ParameterDirection.Input);
+                a = conn.QueryFirst<Manual>(StoredProcedures.GETMANUALS + " @Id", parameters);
+            }
+
+            a.Models = FillModels(GetModels(), a.ModelId);
+
+            return a;
+        }
+        public List<Manual> GetManuals()
+        {
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                return conn.Query<Manual>(StoredProcedures.GETMANUALS).ToList<Manual>();
+            }
+
+        }
+
+        public Company GetMerchant()
+        {
+            Company c = new Company();
+
+            c.Cities = FillList(GetCities());
+            c.States = FillList(GetStates());
+            c.Countries = FillList(GetCountries());
+
+            return c;
+        }
+        public Company GetMerchant(int Id)
+        {
+            Company c = null;
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Id", Id, DbType.Int32, ParameterDirection.Input);
+                c = conn.QueryFirst<Company>(StoredProcedures.GETMERCHANTS + " @Id", parameters);
+            }
+
+            c.Cities = FillList(GetCities(), c.CityId);
+            c.States = FillList(GetStates(), c.StateId);
+            c.Countries = FillList(GetCountries(), c.CountryId);
+
+            return c;
+        }
+        public List<Company> GetMerchants()
+        {
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                return conn.Query<Company>(StoredProcedures.GETMERCHANTS).ToList<Company>();
+            }
+        }
+
+        public Model GetModel()
+        {
+            Model a = new Model();
+
+            a.Products = FillProducts(GetProducts());
+
+            return a;
+        }
+        public Model GetModel(int Id)
+        {
+            Model a = null;
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Id", Id, DbType.Int32, ParameterDirection.Input);
+                a = conn.QueryFirst<Model>(StoredProcedures.GETMODELS + " @Id", parameters);
+            }
+
+            a.Products = FillProducts(GetProducts(), a.ProductId);
+
+            return a;
+        }
+        public List<Model> GetModels()
+        {
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                return conn.Query<Model>(StoredProcedures.GETMODELS).ToList<Model>();
+            }
+
+        }
+
+        public Product GetProduct()
+        {
+            Product a = new Product();
+
+            a.Companies = FillCompanies(GetCompanies());
+            a.Merchants = FillCompanies(GetMerchants());
+            a.Items = FillItems(GetItems());
+
+            return a;
+        }
+        public Product GetProduct(int Id)
+        {
+            Product a = null;
+
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Id", Id, DbType.Int32, ParameterDirection.Input);
+                a = conn.QueryFirst<Product>(StoredProcedures.GETPRODUCTS + " @Id", parameters);
+            }
+
+            a.Companies = FillCompanies(GetCompanies(), a.CompanyId);
+            a.Merchants = FillCompanies(GetMerchants(), a.MerchantId);
+            a.Items = FillItems(GetItems(), a.ItemId);
+
+            return a;
+        }
+        public List<Product> GetProducts()
+        {
+            using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
+            {
+                return conn.Query<Product>(StoredProcedures.GETPRODUCTS).ToList<Product>();
+            }
+
+        }
 
         public IdName GetState()
         {
@@ -452,7 +624,6 @@ namespace Business.DataContexts
 
             return a;
         }
-
         public IdName GetState(int Id)
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -463,7 +634,6 @@ namespace Business.DataContexts
                 return conn.QueryFirst<IdName>(StoredProcedures.GETSTATES + " @Id", parameters);
             }
         }
-
         public List<IdName> GetStates()
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -479,14 +649,12 @@ namespace Business.DataContexts
                 return conn.Query<IdName>(StoredProcedures.GETSUBCATEGORIES).ToList<IdName>();
             }
         }
-
         public IdName GetSubCategory()
         {
             IdName a = new IdName();
 
             return a;
         }
-
         public IdName GetSubCategory(int Id)
         {
             using (IDbConnection conn = new SqlConnection(Settings.InventoryConnectionString))
@@ -498,6 +666,7 @@ namespace Business.DataContexts
             }
         }
 
+#endregion
 
     }
 }

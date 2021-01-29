@@ -78,6 +78,8 @@
     <Compile Include="Entities\IdName.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\Manual.cs" />
+    <Compile Include="Entities\Model.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IInventoryService.cs" />
     <Compile Include="Services\InventoryService.cs" />

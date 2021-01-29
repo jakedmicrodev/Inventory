@@ -10,7 +10,8 @@ CREATE PROCEDURE [dbo].[CreateArtwork]
 	@ArtTypeId int, 
 	@ArtistId int,
 	@Notes nvarchar(max),
-	@ItemId int
+	@ItemId int,
+	@ImageName nvarchar(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -23,12 +24,14 @@ BEGIN
 	,[ArtTypeId]
 	,[ArtistId]
 	,[Notes]
-	,[ItemId])
+	,[ItemId]
+	,[ImageName])
 	VALUES
 	(@Title
 	,@ArtTypeId
 	,@ArtistId
 	,@Notes
-	,@ItemId)
+	,@ItemId
+	,@ImageName)
 
 END

@@ -14,7 +14,8 @@ CREATE PROCEDURE [dbo].[GetArtWorks]
 	@Title nvarchar(100) = null,
 	@ArtTypeId int = null,
 	@ArtistId int = null,
-	@ItemId int = null
+	@ItemId int = null,
+	@ImageName nvarchar(50)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -30,6 +31,7 @@ BEGIN
 		  ,art.[Name] AS [Artist]
 		  ,a.[Notes]
 		  ,a.[ItemId]
+		  ,a.[ImageName]
 		  ,i.[Name] AS [Item]
 		  ,i.[Description]
 	  FROM [dbo].[Artworks] a
@@ -41,6 +43,7 @@ BEGIN
 	  AND (@ArtTypeId IS NULL OR a.[ArtTypeId] = @ArtTypeId)
 	  AND (@ArtTypeId IS NULL OR a.[ArtistId] = @ArtTypeId)
 	  AND (@ItemId IS NULL OR a.[ItemId] = @ItemId)
+	  AND (@ImageName IS NULL OR a.[ImageName] LIKE '%' + @ImageName + '%')
 	  ORDER BY [Title]
 
 END

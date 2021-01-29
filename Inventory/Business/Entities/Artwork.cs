@@ -37,5 +37,8 @@ namespace Business.Entities
         public List<SelectListItem> Items { get; set; }
 
         public string Notes { get; set; }
+        
+        public string ImageName { get; set; }
+
     }
 }

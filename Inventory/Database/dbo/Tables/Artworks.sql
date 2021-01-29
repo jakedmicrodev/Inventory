@@ -4,6 +4,9 @@
     [ArtTypeId] INT            NOT NULL,
     [ArtistId]  INT            NOT NULL,
     [Notes]     NVARCHAR (MAX) NULL,
-    [ItemId]    INT            NOT NULL
+    [ItemId]    INT            NOT NULL,
+    [ImageName] NVARCHAR (50)  NULL
 );
+
+
 
